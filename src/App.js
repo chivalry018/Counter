@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
-function App() {
+function Disp(props){
+  return(
+
+  <div className='number'>
+    <div className='children'><h1>{props.num}</h1></div>
+  </div>
+  
+  );
+}
+
+export default function App() {
+
+  const [count, setCount] = useState(0);
+
+  const handleIncr = () =>{
+      var temp = count +1;
+      setCount(temp);
+  }
+
+  const handleDecr = () =>{
+    var temp = count -1;
+    setCount(temp);
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='counter'>
+      <Disp num={count}></Disp>
+      <button onClick={handleDecr}><span class="button_top">Decrement</span></button>
+      <button onClick={handleIncr}><span class="button_top">Increment</span></button> 
     </div>
   );
 }
 
-export default App;
+
